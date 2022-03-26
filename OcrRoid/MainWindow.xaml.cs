@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -96,5 +97,10 @@ namespace OcrRoid
             Settings.Default.Save();
         }
 
+        private void OnClickShowLog(object sender, RoutedEventArgs e)
+        {
+            var logWin = new LogWindow(this.Left, this.Width);
+            logWin.ShowDialog();
+        }
     }
 }
