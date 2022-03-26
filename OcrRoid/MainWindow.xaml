@@ -1,0 +1,61 @@
+﻿<Window x:Class="OcrRoid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OcrRoid"
+        mc:Ignorable="d"
+        Topmost="True"
+        Title="MainWindow" Height="300" Width="200">
+    <Grid>
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Padding="3">
+                <MenuItem Header="音声出力先変更">
+                    <MenuItem Header="棒読みちゃん" Click="OnClickChangeBouyomi" />
+                    <MenuItem Header="VoiceRoid" Click="OnClickChangeVoiceRoid"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel>
+            </StackPanel>
+        </DockPanel>
+        <Button 
+            Margin="8"
+            Content="クリッピング" 
+            Grid.Row="1"
+            Click="OnClickClippingBtn"
+        />
+
+        <Button
+            Margin="8"
+            Grid.Row="2"
+            Content="音声の一時停止"
+            Click="OnClickPauseBtn"
+            />
+
+        <Button
+            Margin="8"
+            Content="再生再開"
+            Grid.Row="3"
+            Click="OnClickRestartBtn"
+        />
+
+        <Button
+            Margin="8"
+            Content="再生の停止"
+            Grid.Row="4"
+            Click="OnClickStopBtn"
+            />
+
+        
+
+   
+    </Grid>
+</Window>
