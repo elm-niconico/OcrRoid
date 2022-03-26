@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reactive.Linq;
@@ -16,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using OcrRoid.Ocr;
 using OcrRoid.Talks;
+using OcrRoid.Util;
 using PixelFormat = System.Drawing.Imaging.PixelFormat;
 using Point = System.Windows.Point;
 
@@ -51,12 +53,21 @@ namespace OcrRoid.View
                 .LastAsync()
                 .Subscribe(async e =>
                 {
-                    this.Hide();
-                    Cursor = Cursors.Arrow;
-
-                    await this.OcrAsync(origin, e.EventArgs);
-                   
-                    this.Close();
+                    try
+                    {
+                        this.Hide();
+                        await this.OcrAsync(origin, e.EventArgs);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex.Message);
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        Cursor = Cursors.Arrow;
+                        this.Close();
+                    }
                 });
 
         }

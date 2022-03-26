@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Windows.Documents;
+using OcrRoid.Exceptions;
 
 namespace OcrRoid.Util
 {
@@ -98,10 +99,17 @@ namespace OcrRoid.Util
 
         private static IntPtr GetVoiceRoidHWnd()
         {
-            var handle = WindowsApi.FindWindow(null, WindowTitle);
-            return handle != IntPtr.Zero ? 
-                handle : 
-                WindowsApi.FindWindow(null, WindowTitleOther);
+            try
+            {
+                var handle = WindowsApi.FindWindow(null, WindowTitle);
+                return handle != IntPtr.Zero ?
+                    handle :
+                    WindowsApi.FindWindow(null, WindowTitleOther);
+            }
+            catch (ArgumentException ex)
+            {
+                throw new NotFoundVoiceRoidWHandleException(ex.Message);
+            }
         }
     }
 }
