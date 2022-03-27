@@ -31,6 +31,7 @@ namespace OcrRoid.Talks
         public async Task StopAsync()
         {
             await VoiceRoidUtil.ClickStopButtonAsync();
+            await VoiceRoidUtil.SetTextIntoEditorAsync("");
         }
 
 

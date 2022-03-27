@@ -14,9 +14,8 @@ namespace OcrRoid.Util
     {
         private VoiceRoidUtil(){}
 
-        // なぜかウィンドウタイトルがVOICEROID2の時とVOICEROID2*の時がある
         private const string WindowTitle = "VOICEROID2";
-
+        // VoiceRoid側で文字を入れるなどの変更があった場合このタイトルに変わる
         private const string WindowTitleOther = "VOICEROID2*";
 
         public static async Task  SetTextIntoEditorAsync(string sentence)
@@ -24,7 +23,6 @@ namespace OcrRoid.Util
             await Task.Run(async () =>
             {
                 await ClickStopButtonAsync();
-                await Task.Delay(1000);
                 var editor = GetInputEditor().GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
                 editor?.SetValue(sentence);
             });
