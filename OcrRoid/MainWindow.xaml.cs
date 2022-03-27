@@ -29,9 +29,10 @@ namespace OcrRoid
         public MainWindow()
         {
             InitializeComponent();
+            UpdateTalkTypeTxt();
         }
 
-        private async  void OnClickClippingBtn(object sender, RoutedEventArgs e)
+        private async void OnClickClippingBtn(object sender, RoutedEventArgs e)
         {
 
             var clippingWindow = new ClippingWindow();
@@ -74,7 +75,7 @@ namespace OcrRoid
 
             try
             {
-                
+
                 await TalkFactory
                     .FactTalkFromSettings()
                     .RestartAsync();
@@ -89,18 +90,32 @@ namespace OcrRoid
         {
             Settings.Default.talkType = 0;
             Settings.Default.Save();
+            UpdateTalkTypeTxt();
         }
 
         private void OnClickChangeVoiceRoid(object sender, RoutedEventArgs e)
         {
             Settings.Default.talkType = 1;
             Settings.Default.Save();
+            UpdateTalkTypeTxt();
         }
 
         private void OnClickShowLog(object sender, RoutedEventArgs e)
         {
             var logWin = new LogWindow(this.Left, this.Width);
             logWin.ShowDialog();
+        }
+
+        private void UpdateTalkTypeTxt()
+        {
+            this.TalkTypeTxt.Text = CreateTalkTypeTxt();
+        }
+        private string CreateTalkTypeTxt()
+        {
+            var talkType = Settings.Default.talkType;
+            var talkTxt = talkType == 0 ? "棒読みちゃん" : "VoiceRoid";
+
+            return $"{talkTxt}に出力中";
         }
     }
 }

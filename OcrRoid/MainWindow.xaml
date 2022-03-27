@@ -12,6 +12,7 @@
        
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
@@ -29,17 +30,23 @@
             </Menu>
         </DockPanel>
 
-
+        <TextBlock
+            Grid.Row="1"
+            Padding="10"
+            FontSize="11"
+            Foreground="MidnightBlue"
+            Name="TalkTypeTxt"
+            ></TextBlock>
         <Button 
             Margin="8"
             Content="クリッピング" 
-            Grid.Row="1"
+            Grid.Row="2"
             Click="OnClickClippingBtn"
         />
 
         <Button
             Margin="8"
-            Grid.Row="2"
+            Grid.Row="3"
             Content="音声の一時停止"
             Click="OnClickPauseBtn"
             />
@@ -47,14 +54,14 @@
         <Button
             Margin="8"
             Content="再生再開"
-            Grid.Row="3"
+            Grid.Row="4"
             Click="OnClickRestartBtn"
         />
 
         <Button
             Margin="8"
             Content="再生の停止"
-            Grid.Row="4"
+            Grid.Row="5"
             Click="OnClickStopBtn"
             />
 
