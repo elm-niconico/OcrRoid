@@ -81,7 +81,12 @@ namespace OcrRoid.View
 
             var ocr = new WindowsOcr();
             var text = await ocr.OcrFromImageAsync(bmp);
-
+            if (string.IsNullOrEmpty(text))
+            {
+                MessageBox.Show("文字が読み取れませんでした", "認識エラー");
+                return;
+            }
+            
             var talk = TalkFactory.FactTalkFromSettings();
             await talk.SpeakAsync(text);
         }
