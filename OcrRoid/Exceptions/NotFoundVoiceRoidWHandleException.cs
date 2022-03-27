@@ -15,5 +15,13 @@ namespace OcrRoid.Exceptions
 
         }
 
+        public NotFoundVoiceRoidWHandleException() : base(
+            message: $"VoiceRoidのウィンドウハンドルが見つかりませんでした。{Environment.NewLine}" +
+                     $"VoiceRoidが起動されているか確認してください。{Environment.NewLine}")
+
+        {
+
+        }
+
     }
 }

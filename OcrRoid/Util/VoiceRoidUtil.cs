@@ -28,6 +28,13 @@ namespace OcrRoid.Util
             });
         }
 
+        public static async Task<bool> IsSpeakingAsync()
+        {
+            await ClickStopButtonAsync();
+            var editor = GetInputEditor().GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
+            return editor?.Current.IsReadOnly ?? throw new NotFoundVoiceRoidWHandleException();
+        }
+
         public static async Task ClickSpeakButtonAsync()
         {
             await Task.Run(() =>

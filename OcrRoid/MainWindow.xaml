@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:OcrRoid"
         mc:Ignorable="d"
         Topmost="True"
+        Left="0"
+        Top="0"
+      
+        ResizeMode="CanMinimize"
         Height="300"
         Width="200">
     <Grid>
