@@ -36,6 +36,8 @@ namespace OcrRoid.View
             var mouseLeftDown = Observable.FromEventPattern<MouseEventArgs>(this, "MouseLeftButtonDown");
             var mouseMove = Observable.FromEventPattern<MouseEventArgs>(this, "MouseMove");
             var mouseUp = Observable.FromEventPattern<MouseEventArgs>(this, "MouseLeftButtonUp");
+      
+
 
             var origin = new Point();
             mouseLeftDown
@@ -103,5 +105,12 @@ namespace OcrRoid.View
 
         }
 
+        private void OnKeyDownCloseWindow(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:OcrRoid"
         mc:Ignorable="d"
         Topmost="True"
-        Title="MainWindow" Height="300" Width="200">
+        Height="300"
+        Width="200">
     <Grid>
        
         <Grid.RowDefinitions>
