@@ -32,14 +32,26 @@ namespace OcrRoid
             UpdateTalkTypeTxt();
         }
 
-        private async void OnClickClippingBtn(object sender, RoutedEventArgs e)
+        private void OnClickClippingBtn(object sender, RoutedEventArgs e)
         {
-
             var clippingWindow = new ClippingWindow();
-            this.Visibility = Visibility.Hidden;
-            clippingWindow.ShowDialog();
+            try
+            {
+                this.Visibility = Visibility.Hidden;
+                clippingWindow.ShowDialog();
 
-            this.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if(clippingWindow.IsActive)
+                    clippingWindow.Close();
+                this.Visibility = Visibility.Visible;
+            }
         }
 
         private async void OnClickPauseBtn(object sender, RoutedEventArgs e)
